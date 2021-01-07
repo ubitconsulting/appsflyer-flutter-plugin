@@ -467,6 +467,10 @@ class AppsflyerSdk {
     _methodChannel.invokeMethod("setOneLinkCustomDomain", brandDomains);
   }
 
+  void setSandboxMode() {
+    _methodChannel.invokeMethod("setSandboxMode");
+  }
+
   void onInstallConversionData(Function callback) async {
     startListening(callback, "onInstallConversionData");
   }

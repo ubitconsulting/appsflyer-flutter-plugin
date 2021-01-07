@@ -103,7 +103,9 @@ static BOOL _oaoaCallback = false;
         [self startListening:call result:result];
     }else if([@"setOneLinkCustomDomain" isEqualToString:call.method]){
         [self setOneLinkCustomDomain:call result:result];
-    }
+    }else if([@"setSandboxMode" isEqualToString:call.method]){
+             [self setSandboxMode:call result:result];
+         }
     else{
         result(FlutterMethodNotImplemented);
     }
@@ -112,6 +114,10 @@ static BOOL _oaoaCallback = false;
 - (void)setOneLinkCustomDomain:(FlutterMethodCall*)call result:(FlutterResult)result{
     NSArray* brandDomains = call.arguments;
     [[AppsFlyerLib shared] setOneLinkCustomDomains:brandDomains];
+    result(nil);
+}
+- (void)setSandboxMode:(FlutterMethodCall*)call result:(FlutterResult)result{
+    [AppsFlyerLib shared].useReceiptValidationSandbox = YES;
     result(nil);
 }
 
